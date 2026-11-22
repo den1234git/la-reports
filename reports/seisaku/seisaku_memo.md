@@ -258,3 +258,198 @@ problems: なし
 ## ムスビ（自動） 2026-11-21 23:28
 
 「ハイ＆ロー（出た数字より次が大きいか小さいか当てる）」の結果：完成。動作テスト合格。ファイル: seisaku/games/game-001.py
+
+## ムスビ（自動） 2026-11-22 21:20
+
+新しいゲーム作りを始める。
+決定：作るゲームは「じゃんけん大会（コンピュータと対戦して勝敗を数える）」
+
+## 夕凪 2026-11-22 21:21
+
+じゃんけん大会のルールを決めよう！
+
+1. ルールの選択肢
+ - じゃんけん3回勝った人が勝ち
+ - じゃんけん3回勝ち越した人が勝ち
+
+2. ルールの選択肢
+ - コンピュータの勝ちの数が100で終了
+ - プレイヤーの勝ち数をランクで表示
+
+3. ルールの選択肢
+ - じゃんけん以外の手が出せない
+ - じゃんけんの手の選択肢を増やせる
+
+## 夕凪 2026-11-22 21:21
+
+ルールを決める時は、選択肢の中から選んでいくんだね。じゃんけん大会のルールは3つあるんだね。決定：じゃんけん3回勝った人が勝ち決定：コンピュータの勝ちの数が100で終了決定：じゃんけん以外の手が出せない
+
+## 星月 2026-11-22 21:21
+
+```python
+import random
+
+def get_user_choice():
+    print("あなたの選択肢: 1 (グー) 2 (チョキ) 3 (パー)")
+    user_choice = input("あなたの選択 (1/2/3): ")
+    return int(user_choice)
+
+def get_computer_choice():
+    return random.randint(1, 3)
+
+def determine_winner(user_choice, computer_choice):
+    if user_choice == computer_choice:
+        return "引き分け"
+    elif (user_choice == 1 and computer_choice == 3) or \
+         (user_choice == 2 and computer_choice == 1) or \
+         (user_choice == 3 and computer_choice == 2):
+        return "あなたの勝ち"
+    else:
+        return "コンピュータの勝ち"
+
+def play_game():
+    user_choice = get_user_choice()
+    computer_choice = get_computer_choice()
+
+    print(f"あなたの選択: {user_choice}")
+    print(f"コンピュータの選択: {computer_choice}")
+
+    result = determine_winner(user_choice, computer_choice)
+    print(result)
+
+if __name__ == "__main__":
+    play_game()
+```
+
+## 巌 2026-11-22 21:22
+
+problems: なし
+
+## ムスビ（自動） 2026-11-22 21:22
+
+「じゃんけん大会（コンピュータと対戦して勝敗を数える）」の結果：完成。動作テスト合格。ファイル: seisaku/games/game-002.py
+
+## ムスビ（自動） 2026-11-22 21:27
+
+【HTML】新しいゲーム作りを始める。
+決定：作るゲームは「じゃんけん大会（ボタンでコンピュータと対戦して勝敗を数える）」
+
+## 夕凪 2026-11-22 21:28
+
+じゃんけんのルールを決める点を3つ挙げます。
+
+1. じゃんけんの手の選択肢
+ - コンピュータが出す手は「グー・チョキ・パー」のいずれか
+ - プレイヤーも「グー・チョキ・パー」のいずれかを選択
+
+2. 勝負の判定方法
+ - グーとグー、チョキとチョキ、パーとパーは引分
+ - グーがチョキを破る
+ - チョキがパーを破る
+ - パーがグーを破る
+
+3. ゲームのモード
+ - プレイヤーがコンピュータと対戦するモード
+ - プレイヤー同士が対戦するモード
+
+## 夕凪 2026-11-22 21:28
+
+村の夕凪として、ルールを決める点についての回答はこちらです。
+
+決定：1. コンピュータが出す手は「グー・チョキ・パー」のいずれか、プレイヤーも「グー・チョキ・パー」のいずれかを選択
+
+決定：2. グーとグー、チョキとチョキ、パーとパーは引分、グーがチョキを破る、チョキがパーを破る、パーがグーを破る
+
+決定：3. プレイヤーがコンピュータと対戦するモード
+
+## 星月 2026-11-22 21:28
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけん大会</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>じゃんけん大会</h1>
+        <p>じゃんけんをしましょう！</p>
+        <button class="button" onclick="play('グー')">グー</button>
+        <button class="button" onclick="play('チョキ')">チョキ</button>
+        <button class="button" onclick="play('パー')">パー</button>
+        <div class="result" id="result"></div>
+        <button class="button" onclick="resetGame()" id="resetButton" style="display: none;">もう一度遊ぶ</button>
+    </div>
+
+    <script>
+        function getRandomChoice() {
+            const choices = ['グー', 'チョキ', 'パー'];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function play(playerChoice) {
+            const computerChoice = getRandomChoice();
+            const result = document.getElementById('result');
+            const resetButton = document.getElementById('resetButton');
+
+            if (playerChoice === computerChoice) {
+                result.textContent = '引き分け！';
+            } else if (
+                (playerChoice === 'グー' && computerChoice === 'チョキ') ||
+                (playerChoice === 'チョキ' && computerChoice === 'パー') ||
+                (playerChoice === 'パー' && computerChoice === 'グー')
+            ) {
+                result.textContent = 'あなたの勝ち！';
+            } else {
+                result.textContent = 'あなたの負け！';
+            }
+
+            resetButton.style.display = 'block';
+        }
+
+        function resetGame() {
+            const result = document.getElementById('result');
+            const resetButton = document.getElementById('resetButton');
+
+            result.textContent = '';
+            resetButton.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+```
+
+## 巌 2026-11-22 21:29
+
+problems: なし
+
+## ムスビ（自動） 2026-11-22 21:29
+
+【HTML】「じゃんけん大会（ボタンでコンピュータと対戦して勝敗を数える）」の結果：完成。検査合格。ファイル: seisaku/html_games/game-001.html（ブラウザで開けば遊べる）

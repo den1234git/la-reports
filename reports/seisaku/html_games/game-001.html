@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけん大会</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>じゃんけん大会</h1>
+        <p>じゃんけんをしましょう！</p>
+        <button class="button" onclick="play('グー')">グー</button>
+        <button class="button" onclick="play('チョキ')">チョキ</button>
+        <button class="button" onclick="play('パー')">パー</button>
+        <div class="result" id="result"></div>
+        <button class="button" onclick="resetGame()" id="resetButton" style="display: none;">もう一度遊ぶ</button>
+    </div>
+
+    <script>
+        function getRandomChoice() {
+            const choices = ['グー', 'チョキ', 'パー'];
+            return choices[Math.floor(Math.random() * choices.length)];
+        }
+
+        function play(playerChoice) {
+            const computerChoice = getRandomChoice();
+            const result = document.getElementById('result');
+            const resetButton = document.getElementById('resetButton');
+
+            if (playerChoice === computerChoice) {
+                result.textContent = '引き分け！';
+            } else if (
+                (playerChoice === 'グー' && computerChoice === 'チョキ') ||
+                (playerChoice === 'チョキ' && computerChoice === 'パー') ||
+                (playerChoice === 'パー' && computerChoice === 'グー')
+            ) {
+                result.textContent = 'あなたの勝ち！';
+            } else {
+                result.textContent = 'あなたの負け！';
+            }
+
+            resetButton.style.display = 'block';
+        }
+
+        function resetGame() {
+            const result = document.getElementById('result');
+            const resetButton = document.getElementById('resetButton');
+
+            result.textContent = '';
+            resetButton.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
