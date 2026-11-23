@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>計算ドリル</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .score {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .question {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .input {
+            font-size: 1.2em;
+            padding: 10px;
+            width: 200px;
+        }
+        .button {
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>計算ドリル</h1>
+        <p>遊び方：足し算や引き算の問題に答え、正解数を記入してください。</p>
+        <div class="score">スコア: <span id="score">0</span></div>
+        <div class="question" id="question">?</div>
+        <input type="text" id="answer" class="input" placeholder="答えを入力してください">
+        <button class="button" onclick="checkAnswer()">答えをチェック</button>
+        <div class="result" id="result"></div>
+        <button class="button" onclick="newGame()" id="newGameButton" style="display:none;">もう一度遊ぶ</button>
+    </div>
+
+    <script>
+        let score = 0;
+        let correctAnswers = 0;
+        let totalQuestions = 0;
+
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 100);
+            const num2 = Math.floor(Math.random() * 100);
+            const operator = Math.random() < 0.5 ? '+' : '-';
+            const question = `${num1} ${operator} ${num2}`;
+            const answer = operator === '+' ? num1 + num2 : num1 - num2;
+            return { question, answer };
+        }
+
+        function updateScore() {
+            document.getElementById('score').innerText = score;
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer').value);
+            const { answer } = generateQuestion();
+            if (userAnswer === answer) {
+                correctAnswers++;
+                score += 2 * correctAnswers; // 正解数のカウントは採点のポイント数が2倍になる
+                document.getElementById('result').innerText = '正解！';
+            } else {
+                document.getElementById('result').innerText = '不正解';
+            }
+            totalQuestions++;
+            document.getElementById('question').innerText = generateQuestion().question;
+            document.getElementById('answer').value = '';
+            if (totalQuestions === 10) {
+                document.getElementById('newGameButton').style.display = 'block';
+                document.getElementById('result').innerText = `ゲーム終了！あなたのスコアは ${score} 点です。`;
+                document.getElementById('question').innerText = '';
+                document.getElementById('answer').value = '';
+            }
+        }
+
+        function newGame() {
+            score = 0;
+            correctAnswers = 0;
+            totalQuestions = 0;
+            document.getElementById('score').innerText = score;
+            document.getElementById('result').innerText = '';
+            document.getElementById('newGameButton').style.display = 'none';
+            document.getElementById('question').innerText = generateQuestion().question;
+            document.getElementById('answer').value = '';
+        }
+
+        newGame();
+    </script>
+</body>
+</html>

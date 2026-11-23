@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コイントス</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  #game-container {
+    text-align: center;
+  }
+  #score {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+<div id="game-container">
+  <h1>コイントス</h1>
+  <p>表か裏かのボタンを押して当てる。</p>
+  <p>持ち点10点、1回1点賭けて当たれば2点戻る</p>
+  <div id="score">Score: 10</div>
+  <button onclick="flipCoin()">表か裏か</button>
+  <button onclick="resetGame()">もう一度遊ぶ</button>
+</div>
+
+<script>
+  let score = 10;
+
+  function flipCoin() {
+    const result = Math.random() < 0.5 ? "表" : "裏";
+    const userChoice = prompt("表か裏かを入力してください（表または裏）");
+    if (userChoice === result) {
+      score += 1;
+      document.getElementById('score').textContent = 'Score: ' + score;
+      alert('あたり！');
+    } else {
+      score -= 1;
+      document.getElementById('score').textContent = 'Score: ' + score;
+      alert('はずれ！');
+    }
+  }
+
+  function resetGame() {
+    score = 10;
+    document.getElementById('score').textContent = 'Score: ' + score;
+    alert('ゲームをリセットしました！');
+  }
+</script>
+</body>
+</html>
