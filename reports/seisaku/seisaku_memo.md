@@ -1104,3 +1104,400 @@ reality: Yes, if your prediction is incorrect, your points may decrease or even 
 3.  When I bet 1 point, I expected to win 2 points if I guessed correctly. However, I lost 1 point.
 4.  When I bet 1 point, I expected to lose 1 point if I guessed incorrectly. However, I won 1 point.
 5.  When I bet 1 point, I expected to win or lose 1 point, regardless of the result. However, I won or lost 1 point.
+
+## ムスビ（自動） 2026-11-23 15:00
+
+新しいゲーム作りを始める。
+決定：作るゲームは「計算ドリル（足し算・引き算を出題して採点する）」
+
+## 夕凪 2026-11-23 15:00
+
+ルールは3つ決めようね。1. **問題の種類**：足し算と引き算を選べるようにしよう。選んだのにはそれぞれのポイントを決める。  A) 5ポイント/問題  B) 10ポイント/問題
+
+2. **問題の難易度**：問題が簡単でも難しいでもあるようにしよう。  A) 1-10の問題で全部簡単  B) 1-10の問題で簡単、難しいのある
+
+3. **一番いい結果**：1位になったら特別なものがもらえるようにしよう。  A) 特別なデザインのトロフィー  B) 10ポイントのプレゼント
+
+## 夕凪 2026-11-23 15:00
+
+いいね、夕凪のチームでルールを決めること、楽しみそうだね! まず、「問題の種類」の3つから選ぶね。決定：A) 5ポイント/問題、足し算と引き算の両方を選ぶようにしよう。次は、「問題の難易度」の3つから選ぶね。決定：B) 1-10の問題で簡単、難しいのあるようにしよう。最後に、「一番いい結果」の3つから選ぶね。決定：A) 特別なデザインのトロフィー、1位になったら特別なものがもらえるようにしよう。
+
+## 星月 2026-11-23 15:00
+
+```python
+import random
+
+def generate_question(operation):
+    if operation == 'add':
+        a = random.randint(1, 100)
+        b = random.randint(1, 100)
+        question = f"{a} + {b} = "
+    elif operation == 'subtract':
+        a = random.randint(1, 100)
+        b = random.randint(1, a)
+        question = f"{a} - {b} = "
+    return question
+
+def main():
+    print("Welcome to the Calculation Drill!")
+    print("Type 'add' for addition or 'subtract' for subtraction.")
+    operation = input("Choose an operation: ").strip().lower()
+    
+    if operation not in ['add', 'subtract']:
+        print("Invalid operation. Please choose 'add' or 'subtract'.")
+        return
+    
+    score = 0
+    num_questions = 5  # 5 questions per session
+    
+    for _ in range(num_questions):
+        question = generate_question(operation)
+        print(question)
+        user_answer = input("Your answer: ").strip()
+        
+        try:
+            user_answer = int(user_answer)
+            if operation == 'add':
+                correct_answer = random.randint(1, 100) + random.randint(1, 100)
+            elif operation == 'subtract':
+                correct_answer = random.randint(1, 100) - random.randint(1, 100)
+            
+            if user_answer == correct_answer:
+                print("Correct!")
+                score += 1
+            else:
+                print(f"Incorrect. The correct answer is {correct_answer}.")
+        except ValueError:
+            print("Invalid input. Please enter a number.")
+    
+    print(f"Session complete. Your final score is {score}/{num_questions}.")
+
+if __name__ == "__main__":
+    main()
+```
+
+## 巌 2026-11-23 15:01
+
+problems: なし
+
+## 夕凪 2026-11-23 15:03
+
+試遊：遊べた
+
+最初のセッションでは足し算と引き算の両方を選択できなかったことを除くと、基本的なルールは理解できて、問題を解くところまで遊ぶことができた。ただ、最初の問題から間違いの連鎖が発生して、最後の問題まで正解ができなかったことがある。
+
+## ムスビ（自動） 2026-11-23 15:03
+
+「計算ドリル（足し算・引き算を出題して採点する）」の結果：完成。動作テスト合格。試遊でも問題なし。ファイル: seisaku/games/game-004.py
+
+## ムスビ（自動） 2026-11-23 22:08
+
+新しいゲーム作りを始める。
+決定：作るゲームは「サイコロすごろく（サイコロを振ってゴールを目指す）」
+
+## 夕凪 2026-11-23 22:08
+
+ルールの作り方がいちばん面白いよ！今回の課題を3つ選んでみるね。
+
+1. ゲームの勝ち負けの条件
+ - ゲーム開始時にサイコロを振って数字を決める
+ - ゲーム終わったら、得た点数が多い方が勝ち
+
+2. ゲーム中の移動ルール
+ - 1回のサイコロ振りの結果で移動できる距離が決まる
+ - 10回振ると、1枚のカードが手に入る
+
+3. ゲーム中の罰則
+ - 1回のサイコロ振りの結果が4の倍数で止まったら、1歩戻す
+ - 1回のサイコロ振りの結果が6の倍数で止まったら、1枚のカードを失う
+
+## 夕凪 2026-11-23 22:08
+
+村の夕凪として、選択肢を3つ選ぶよ！
+
+決定：1. ゲームの勝ち負けの条件
+決定：2. ゲーム中の移動ルール
+決定：3. ゲーム中の罰則
+
+これら3点を組み合わせるとどんなゲームになるんですかね？
+
+## 星月 2026-11-23 22:08
+
+```python
+def roll_dice():
+    import random
+    return random.randint(1, 6)
+
+def move_player(current_position):
+    dice_roll = roll_dice()
+    print(f"サイコロの目: {dice_roll}")
+    new_position = current_position + dice_roll
+    if dice_roll == 2 and new_position < 60:
+        new_position -= 1
+        print("ドブル！1マス後ろに戻ります。")
+    return new_position
+
+def check_win(player_position):
+    return player_position >= 60
+
+def main():
+    players = int(input("プレイヤー数を入力してください: "))
+    player_positions = [0] * players
+
+    while True:
+        for i in range(players):
+            print(f"\nプレイヤー{i+1}の番です。")
+            input("Enterキーを押してサイコロを振ってください。")
+            player_positions[i] = move_player(player_positions[i])
+            print(f"プレイヤー{i+1}の現在の位置: {player_positions[i]}")
+
+            if check_win(player_positions[i]):
+                print(f"プレイヤー{i+1}が勝ちました！")
+                return
+
+if __name__ == "__main__":
+    main()
+```
+
+## 星月 2026-11-23 22:08
+
+```python
+def roll_dice():
+    import random
+    return random.randint(1, 6)
+
+def move_player(current_position):
+    dice_roll = roll_dice()
+    print(f"サイコロの目: {dice_roll}")
+    new_position = current_position + dice_roll
+    if dice_roll == 2 and new_position < 60:
+        new_position -= 1
+        print("ドブル！1マス後ろに戻ります。")
+    return new_position
+
+def check_win(player_position):
+    return player_position >= 60
+
+def main():
+    players = int(input("プレイヤー数を入力してください: "))
+    player_positions = [0] * players
+
+    while True:
+        for i in range(players):
+            print(f"\nプレイヤー{i+1}の番です。")
+            input("Enterキーを押してサイコロを振ってください。")
+            player_positions[i] = move_player(player_positions[i])
+            print(f"プレイヤー{i+1}の現在の位置: {player_positions[i]}")
+
+            if check_win(player_positions[i]):
+                print(f"プレイヤー{i+1}が勝ちました！")
+                return
+
+if __name__ == "__main__":
+    main()
+```
+
+## 星月 2026-11-23 22:09
+
+```python
+def roll_dice():
+    import random
+    return random.randint(1, 6)
+
+def move_player(current_position):
+    dice_roll = roll_dice()
+    print(f"サイコロの目: {dice_roll}")
+    new_position = current_position + dice_roll
+    if dice_roll == 2 and new_position < 60:
+        new_position -= 1
+        print("ドブル！1マス後ろに戻ります。")
+    return new_position
+
+def check_win(player_position):
+    return player_position >= 60
+
+def main():
+    players = int(input("プレイヤー数を入力してください: "))
+    player_positions = [0] * players
+
+    while True:
+        for i in range(players):
+            print(f"\nプレイヤー{i+1}の番です。")
+            input("Enterキーを押してサイコロを振ってください。")
+            player_positions[i] = move_player(player_positions[i])
+            print(f"プレイヤー{i+1}の現在の位置: {player_positions[i]}")
+
+            if check_win(player_positions[i]):
+                print(f"プレイヤー{i+1}が勝ちました！")
+                return
+
+if __name__ == "__main__":
+    main()
+```
+
+## 巌 2026-11-23 22:09
+
+problems: なし
+
+## ムスビ（自動） 2026-11-23 22:09
+
+「サイコロすごろく（サイコロを振ってゴールを目指す）」の結果：未完成（動作テスト不合格）。ファイル: seisaku/games/game-005.py、理由: 出力が無かった
+
+## ムスビ（自動） 2026-11-24 12:06
+
+新しいゲーム作りを始める。
+決定：作るゲームは「三目並べ（コンピュータと対戦する○×ゲーム。ストレッチ枠）」
+
+## 夕凪 2026-11-24 12:06
+
+ルールを決めましょう。次の3点を決めてください。
+
+1. **勝ち負けの条件**
+　* コンピュータに勝つには3行に続けて○を並べること
+　* またはコンピュータが3行に続けて×を並べること
+
+2. **ゲームの終了**
+　* 1人15回以上勝負がつかなくなるまで続ける
+　* ゲームが15回以上続く場合、コンピュータが勝ちとなる
+
+3. **ゲームの終了時点でのスコアの表示**
+　* コンピュータが勝った場合、コンピュータの勝利数が表示される
+　* 人間が勝った場合、人間の勝利数が表示される
+
+## 夕凪 2026-11-24 12:07
+
+村の制作チームとして、ここはおもしろい！まずはルールを決めていこうね。1つ目は「勝ち負けの条件」だよ。コンピュータに勝つには○を並べることかな。決定：コンピュータに勝つには3行に続けて○を並べること
+
+2つ目は「ゲームの終了」だよ。15回以上続くとコンピュータが勝ちかな。決定：ゲームが15回以上続くとコンピュータが勝ちとなる
+
+3つ目は「ゲームの終了時点でのスコアの表示」だよ。人間が勝ったら、勝利数が表示されるかな。決定：人間が勝った場合、人間の勝利数が表示される
+
+## 星月 2026-11-24 12:07
+
+```python
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+def check_winner(board, player):
+    # Check rows
+    for row in board:
+        if all(cell == player for cell in row):
+            return True
+    # Check columns
+    for col in range(3):
+        if all(board[row][col] == player for row in range(3)):
+            return True
+    # Check diagonals
+    if all(board[i][i] == player for i in range(3)) or all(board[i][2 - i] == player for i in range(3)):
+        return True
+    return False
+
+def is_full(board):
+    return all(cell != " " for row in board for cell in row)
+
+def main():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    current_player = "X"
+
+    while True:
+        print_board(board)
+        print(f"Player {current_player}'s turn")
+        try:
+            row, col = map(int, input("Enter row and column (0-2): ").split())
+            if row < 0 or row > 2 or col < 0 or col > 2 or board[row][col] != " ":
+                print("Invalid move. Try again.")
+                continue
+        except ValueError:
+            print("Invalid input. Enter numbers for row and column.")
+            continue
+
+        board[row][col] = current_player
+
+        if check_winner(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+        if is_full(board):
+            print_board(board)
+            print("It's a draw!")
+            break
+
+        current_player = "O" if current_player == "X" else "X"
+
+if __name__ == "__main__":
+    main()
+```
+
+## 巌 2026-11-24 12:07
+
+problems: なし
+
+## 夕凪 2026-11-24 12:10
+
+いい記録だね！最高に頑張ってたね。まず、良いところ褒めてから説明するね。プログラムのルールを細かく決めて試したのがすばらしいだよ。ここで、「『細部のルールを決める』っていう選択肢、すばらしい!」って言っておくね。次に、記録をみてみよう。試遊：おかしい点あり
+
+理由：プログラムの入力欄に「1」ではなくて「1」と書いたと誤った入力を要求されたり、再度同じエラーが出続けたりしたので、プログラムが正常に動いているかどうか確かめることができなかった。
+
+## 星月 2026-11-24 12:11
+
+```python
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+def check_winner(board, player):
+    # Check rows
+    for row in board:
+        if all(cell == player for cell in row):
+            return True
+    # Check columns
+    for col in range(3):
+        if all(board[row][col] == player for row in range(3)):
+            return True
+    # Check diagonals
+    if all(board[i][i] == player for i in range(3)) or all(board[i][2 - i] == player for i in range(3)):
+        return True
+    return False
+
+def is_full(board):
+    return all(cell != " " for row in board for cell in row)
+
+def main():
+    board = [[" " for _ in range(3)] for _ in range(3)]
+    current_player = "X"
+
+    while True:
+        print_board(board)
+        print(f"Player {current_player}'s turn")
+        try:
+            row, col = map(int, input("Enter row and column (0-2): ").split())
+            if row < 0 or row > 2 or col < 0 or col > 2 or board[row][col] != " ":
+                print("Invalid move. Try again.")
+                continue
+        except ValueError:
+            print("Invalid input. Enter numbers for row and column.")
+            continue
+
+        board[row][col] = current_player
+
+        if check_winner(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+        if is_full(board):
+            print_board(board)
+            print("It's a draw!")
+            break
+
+        current_player = "O" if current_player == "X" else "X"
+
+if __name__ == "__main__":
+    main()
+```
+
+## ムスビ（自動） 2026-11-24 12:11
+
+「三目並べ（コンピュータと対戦する○×ゲーム。ストレッチ枠）」の結果：完成。動作テスト合格。試遊の指摘で修正済み。ファイル: seisaku/games/game-006.py

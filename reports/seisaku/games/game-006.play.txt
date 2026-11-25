@@ -1,0 +1,303 @@
+
+―――― 1回目 ――――
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 「1」
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+
+―――― 2回目 ――――
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 「1」
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 「1」
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+
+―――― 3回目 ――――
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 「1」
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1
+Invalid input. Enter numbers for row and column.
+  |   |  
+-----
+  |   |  
+-----
+  |   |  
+-----
+Player X's turn
+Enter row and column (0-2): 
+> 1

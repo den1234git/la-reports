@@ -1,0 +1,110 @@
+
+―――― 1回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> add
+63 + 89 = 
+Your answer: 
+> 89
+Incorrect. The correct answer is 145.
+24 + 45 = 
+Your answer: 
+> 1
+Incorrect. The correct answer is 28.
+78 + 98 = 
+Your answer: 
+> 152
+Incorrect. The correct answer is 101.
+89 + 33 = 
+Your answer: 
+> 152
+Incorrect. The correct answer is 136.
+71 + 48 = 
+Your answer: 
+> 152
+Incorrect. The correct answer is 120.
+Session complete. Your final score is 0/5.
+
+―――― 2回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 2
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 3回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 1
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 4回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 4
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 5回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> to
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 6回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 1
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 7回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> add
+2 + 61 = 
+Your answer: 
+> 1
+Incorrect. The correct answer is 47.
+77 + 94 = 
+Your answer: 
+> 2
+Incorrect. The correct answer is 166.
+88 + 90 = 
+Your answer: 
+> 1
+Incorrect. The correct answer is 53.
+60 + 67 = 
+Your answer: 
+> 1
+Incorrect. The correct answer is 130.
+75 + 15 = 
+Your answer: 
+> 1
+Incorrect. The correct answer is 155.
+Session complete. Your final score is 0/5.
+
+―――― 8回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 1
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 9回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 9
+Invalid operation. Please choose 'add' or 'subtract'.
+
+―――― 10回目 ――――
+Welcome to the Calculation Drill!
+Type 'add' for addition or 'subtract' for subtraction.
+Choose an operation: 
+> 1
+Invalid operation. Please choose 'add' or 'subtract'.
