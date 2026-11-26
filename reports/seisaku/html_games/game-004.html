@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>オセロ（リバーシ）</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(8, 40px);
+            grid-template-rows: repeat(8, 40px);
+            gap: 1px;
+            margin-bottom: 20px;
+        }
+        .cell {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .cell.black {
+            background-color: #000;
+        }
+        .cell.white {
+            background-color: #fff;
+        }
+        .cell.empty {
+            background-color: #ddd;
+        }
+        .info {
+            text-align: center;
+        }
+        .score {
+            margin-top: 20px;
+        }
+        .play-again {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>オセロ（リバーシ）</h1>
+    <div class="info">
+        <p>遊び方: 黒い石を配置し、相手の石を挟んでひっくり返す。最初の4つの石は中央に配置されます。</p>
+    </div>
+    <div class="board" id="board"></div>
+    <div class="score" id="score">白: 2 黒: 2</div>
+    <button class="play-again" id="play-again">もう一度遊ぶ</button>
+
+    <script>
+        const boardSize = 8;
+        const board = document.getElementById('board');
+        const scoreElement = document.getElementById('score');
+        const playAgainButton = document.getElementById('play-again');
+        let gameBoard = Array.from({ length: boardSize }, () => Array(boardSize).fill('empty'));
+        let currentPlayer = 'black';
+        let score = { black: 2, white: 2 };
+
+        function initBoard() {
+            board.innerHTML = '';
+            for (let i = 0; i < boardSize; i++) {
+                for (let j = 0; j < boardSize; j++) {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell', gameBoard[i][j]);
+                    cell.addEventListener('click', () => placeStone(i, j));
+                    board.appendChild(cell);
+                }
+            }
+        }
+
+        function placeStone(x, y) {
+            if (gameBoard[x][y] !== 'empty') return;
+            const validMoves = getValidMoves();
+            if (!validMoves.some(move => move[0] === x && move[1] === y)) return;
+            gameBoard[x][y] = currentPlayer;
+            flipStones(x, y);
+            switchPlayer();
+            updateScore();
+            renderBoard();
+            if (getValidMoves().length === 0) {
+                switchPlayer();
+                if (getValidMoves().length === 0) {
+                    endGame();
+                }
+            }
+        }
+
+        function getValidMoves() {
+            const validMoves = [];
+            for (let i = 0; i < boardSize; i++) {
+                for (let j = 0; j < boardSize; j++) {
+                    if (gameBoard[i][j] !== 'empty') continue;
+                    if (hasOppositeStone(i, j)) {
+                        validMoves.push([i, j]);
+                    }
+                }
+            }
+            return validMoves;
+        }
+
+        function hasOppositeStone(x, y) {
+            const directions = [
+                [-1, -1], [-1, 0], [-1, 1],
+                [0, -1],          [0, 1],
+                [1, -1], [1, 0], [1, 1]
+            ];
+            for (const [dx, dy] of directions) {
+                let newX = x + dx;
+                let newY = y + dy;
+                if (newX >= 0 && newX < boardSize && newY >= 0 && newY < boardSize && gameBoard[newX][newY] === oppositeColor(currentPlayer)) {
+                    newX += dx;
+                    newY += dy;
+                    while (newX >= 0 && newX < boardSize && newY >= 0 && newY < boardSize) {
+                        if (gameBoard[newX][newY] === 'empty') break;
+                        if (gameBoard[newX][newY] === currentPlayer) {
+                            return true;
+                        }
+                        newX += dx;
+                        newY += dy;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function flipStones(x, y) {
+            const directions = [
+                [-1, -1], [-1, 0], [-1, 1],
+                [0, -1],          [0, 1],
+                [1, -1], [1, 0], [1, 1]
+            ];
+            for (const [dx, dy] of directions) {
+                let newX = x + dx;
+                let newY = y + dy;
+                if (newX >= 0 && newX < boardSize && newY >= 0 && newY < boardSize && gameBoard[newX][newY] === oppositeColor(currentPlayer)) {
+                    newX += dx;
+                    newY += dy;
+                    while (newX >= 0 && newX < boardSize && newY >= 0 && newY < boardSize) {
+                        if (gameBoard[newX][newY] === 'empty') break;
+                        if (gameBoard[newX][newY] === currentPlayer) {
+                            let flipX = x + dx;
+                            let flipY = y + dy;
+                            while (flipX !== newX || flipY !== newY) {
+                                gameBoard[flipX][flipY] = currentPlayer;
+                                flipX += dx;
+                                flipY += dy;
+                            }
+                            break;
+                        }
+                        newX += dx;
+                        newY += dy;
+                    }
+                }
+            }
+        }
+
+        function switchPlayer() {
+            currentPlayer = currentPlayer === 'black' ? 'white' : 'black';
+        }
+
+        function updateScore() {
+            scoreElement.textContent = `白: ${score.white} 黒: ${score.black}`;
+        }
+
+        function renderBoard() {
+            for (let i = 0; i < boardSize; i++) {
+                for (let j = 0; j < boardSize; j++) {
+                    const cell = board.children[i * boardSize + j];
+                    cell.classList.remove('black', 'white', 'empty');
+                    cell.classList.add(gameBoard[i][j]);
+                }
+            }
+        }
+
+        function endGame() {
+            alert(`ゲーム終了！${score.black > score.white ? '黒' : '白'}の勝ちです。`);
+            initBoard();
+        }
+
+        function oppositeColor(color) {
+            return color === 'black' ? 'white' : 'black';
+        }
+
+        playAgainButton.addEventListener('click', () => {
+            initBoard();
+        });
+
+        initBoard();
+    </script>
+</body>
+</html>
