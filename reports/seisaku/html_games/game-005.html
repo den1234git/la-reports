@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サイコロすごろく</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    text-align: center;
+  }
+  #score {
+    font-size: 2em;
+    margin: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .start {
+    background-color: green;
+    color: white;
+  }
+  .goal {
+    background-color: red;
+    color: white;
+  }
+  .number {
+    font-size: 0.8em;
+  }
+  .visited {
+    background-color: #ccc;
+  }
+  .dice {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: spin 0.5s linear;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .black {
+    background-color: black;
+    color: white;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>サイコロすごろく</h1>
+  <p>遊び方: ボタンを押してサイコロを振ります。スタートからゴールまで到達するまで続けると進む先が表示されます。</p>
+  <p id="score">スコア: 0</p>
+  <p id="dice">サイコロ: -</p>
+  <button id="rollButton">サイコロを振る</button>
+  <button id="restartButton" style="display: none;">もう一度遊ぶ</button>
+  <div class="board" id="board"></div>
+</div>
+
+<script>
+  const rollButton = document.getElementById('rollButton');
+  const restartButton = document.getElementById('restartButton');
+  const scoreDisplay = document.getElementById('score');
+  const diceDisplay = document.getElementById('dice');
+  const board = document.getElementById('board');
+  let diceValue = 0;
+  let playerPosition = 1;
+  let stepsTaken = 0;
+  let rolling = false;
+
+  function createBoard() {
+    for (let i = 1; i <= 64; i++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.dataset.number = i;
+      cell.addEventListener('click', () => placeStone(i));
+      if (i === 1) {
+        cell.classList.add('start');
+        cell.textContent = 'スタート';
+      } else if (i === 64) {
+        cell.classList.add('goal');
+        cell.textContent = 'ゴール';
+      }
+      board.appendChild(cell);
+    }
+    updateBoard();
+  }
+
+  function updateBoard() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell) => {
+      cell.classList.remove('black', 'visited');
+      if (parseInt(cell.dataset.number) === playerPosition) {
+        cell.classList.add('black');
+      } else if (parseInt(cell.dataset.number) < playerPosition) {
+        cell.classList.add('visited');
+      }
+    });
+  }
+
+  function placeStone(number) {
+    if (number === playerPosition && !rolling) {
+      rollDice();
+    }
+  }
+
+  function rollDice() {
+    rolling = true;
+    diceDisplay.textContent = 'サイコロ: -';
+    dice.classList.remove('dice');
+    let spinCount = 0;
+    const spinInterval = setInterval(() => {
+      diceValue = Math.floor(Math.random() * 6) + 1;
+      dice.textContent = diceValue;
+      spinCount++;
+      if (spinCount >= 10) {
+        clearInterval(spinInterval);
+        stepsTaken += diceValue;
+        movePlayer(diceValue);
+        dice.textContent = diceValue;
+        dice.classList.add('dice');
+        rolling = false;
+      }
+    }, 100);
+  }
+
+  function movePlayer(steps) {
+    playerPosition += steps;
+    if (playerPosition > 64) {
+      playerPosition = 64;
+    }
+    updateBoard();
+    if (playerPosition === 64) {
+      alert('ゴールに着きました！');
+      scoreDisplay.textContent = `スコア: ${stepsTaken}`;
+    }
+  }
+
+  function startGame() {
+    rollButton.style.display = 'block';
+    restartButton.style.display = 'none';
+    diceValue = 0;
+    stepsTaken = 0;
+    scoreDisplay.textContent = `スコア: ${stepsTaken}`;
+    diceDisplay.textContent = `サイコロ: -`;
+    playerPosition = 1;
+    createBoard();
+  }
+
+  function restartGame() {
+    rollButton.style.display = 'none';
+    restartButton.style.display = 'block';
+    playerPosition = 1;
+    createBoard();
+  }
+
+  rollButton.addEventListener('click', rollDice);
+  restartButton.addEventListener('click', startGame);
+
+  startGame();
+</script>
+</body>
+</html>

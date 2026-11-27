@@ -79,6 +79,12 @@
                     board.appendChild(cell);
                 }
             }
+            // 初期状態での石の配置
+            gameBoard[3][3] = 'white';
+            gameBoard[3][4] = 'black';
+            gameBoard[4][3] = 'black';
+            gameBoard[4][4] = 'white';
+            renderBoard();
         }
 
         function placeStone(x, y) {
@@ -172,6 +178,14 @@
         }
 
         function updateScore() {
+            score.black = 0;
+            score.white = 0;
+            gameBoard.forEach(row => {
+                row.forEach(cell => {
+                    if (cell === 'black') score.black++;
+                    if (cell === 'white') score.white++;
+                });
+            });
             scoreElement.textContent = `白: ${score.white} 黒: ${score.black}`;
         }
 

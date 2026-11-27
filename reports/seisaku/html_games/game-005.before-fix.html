@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サイコロすごろく</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+  }
+  .container {
+    text-align: center;
+  }
+  #score {
+    font-size: 2em;
+    margin: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>サイコロすごろく</h1>
+  <p>遊び方: ボタンを押してサイコロを振ります。ゴールまで到達するまで続けるとスコアが上がります。</p>
+  <p id="score">スコア: 0</p>
+  <button id="rollButton">サイコロを振る</button>
+  <button id="restartButton" style="display: none;">もう一度遊ぶ</button>
+</div>
+
+<script>
+  const rollButton = document.getElementById('rollButton');
+  const restartButton = document.getElementById('restartButton');
+  const scoreDisplay = document.getElementById('score');
+  let score = 0;
+  let timer;
+
+  function rollDice() {
+    const diceValue = Math.floor(Math.random() * 6) + 1;
+    score += diceValue;
+    scoreDisplay.textContent = `スコア: ${score}`;
+  }
+
+  function startGame() {
+    rollButton.style.display = 'block';
+    restartButton.style.display = 'none';
+    score = 0;
+    scoreDisplay.textContent = `スコア: ${score}`;
+    timer = setInterval(() => {
+      rollDice();
+      if (score >= 100) {
+        clearInterval(timer);
+        alert('ゲームオーバー！');
+        restartGame();
+      }
+    }, 1000);
+  }
+
+  function restartGame() {
+    clearInterval(timer);
+    rollButton.style.display = 'none';
+    restartButton.style.display = 'block';
+  }
+
+  rollButton.addEventListener('click', rollDice);
+  restartButton.addEventListener('click', startGame);
+
+  startGame();
+</script>
+</body>
+</html>

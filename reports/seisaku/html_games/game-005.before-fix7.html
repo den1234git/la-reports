@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>サイコロすごろく</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    text-align: center;
+  }
+  #score {
+    font-size: 2em;
+    margin: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin: 10px;
+  }
+  .board {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+  .cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .start {
+    background-color: green;
+    color: white;
+  }
+  .goal {
+    background-color: red;
+    color: white;
+  }
+  .number {
+    font-size: 0.8em;
+  }
+  .visited {
+    background-color: #ccc;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>サイコロすごろく</h1>
+  <p>遊び方: ボタンを押してサイコロを振ります。スタートからゴールまで到達するまで続けると進む先が表示されます。</p>
+  <p id="score">スコア: 0</p>
+  <p id="dice">サイコロ: -</p>
+  <button id="rollButton">サイコロを振る</button>
+  <button id="restartButton" style="display: none;">もう一度遊ぶ</button>
+  <div class="board" id="board"></div>
+</div>
+
+<script>
+  const rollButton = document.getElementById('rollButton');
+  const restartButton = document.getElementById('restartButton');
+  const scoreDisplay = document.getElementById('score');
+  const diceDisplay = document.getElementById('dice');
+  const board = document.getElementById('board');
+  let diceValue = 0;
+  let playerPosition = { row: 0, col: 0 };
+  let stepsTaken = 0;
+
+  function createBoard() {
+    for (let i = 0; i < 8; i++) {
+      for (let j = 0; j < 8; j++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.addEventListener('click', () => placeStone(i, j));
+        if (i === 0 && j === 0) {
+          cell.classList.add('start');
+          cell.textContent = 'スタート';
+        } else if (i === 7 && j === 7) {
+          cell.classList.add('goal');
+          cell.textContent = 'ゴール';
+        }
+        const numberCell = document.createElement('div');
+        numberCell.classList.add('number');
+        numberCell.textContent = i * 8 + j + 1;
+        cell.appendChild(numberCell);
+        board.appendChild(cell);
+      }
+    }
+    updateBoard();
+  }
+
+  function updateBoard() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach((cell, index) => {
+      const row = Math.floor(index / 8);
+      const col = index % 8;
+      cell.classList.remove('black', 'white', 'start', 'goal', 'visited');
+      if (row === playerPosition.row && col === playerPosition.col) {
+        cell.classList.add('black');
+      } else if (row === 0 && col === 0) {
+        cell.classList.add('start');
+      } else if (row === 7 && col === 7) {
+        cell.classList.add('goal');
+      } else if (cells[index].classList.contains('visited')) {
+        cell.classList.add('visited');
+      }
+    });
+  }
+
+  function placeStone(row, col) {
+    if (row === playerPosition.row && col === playerPosition.col) {
+      rollDice();
+    }
+  }
+
+  function rollDice() {
+    diceValue = Math.floor(Math.random() * 6) + 1;
+    stepsTaken += diceValue;
+    movePlayer(diceValue);
+  }
+
+  function movePlayer(steps) {
+    let newRow = playerPosition.row;
+    let newCol = playerPosition.col;
+
+    while (steps > 0) {
+      newRow++;
+      if (newRow >= 8) {
+        break;
+      }
+      steps--;
+    }
+
+    if (newRow !== playerPosition.row) {
+      playerPosition.row = newRow;
+      playerPosition.col = 0; // 始まりは常に最初の列
+      updateBoard();
+    }
+  }
+
+  function startGame() {
+    rollButton.style.display = 'block';
+    restartButton.style.display = 'none';
+    dice = 0;
+    score = 0;
+    scoreDisplay.textContent = `スコア: ${score}`;
+    diceDisplay.textContent = `サイコロ: -`;
+    playerPosition = { row: 0, col: 0 };
+    createBoard();
+  }
+
+  function restartGame() {
+    rollButton.style.display = 'none';
+    restartButton.style.display = 'block';
+    playerPosition = { row: 0, col: 0 };
+    createBoard();
+  }
+
+  rollButton.addEventListener('click', rollDice);
+  restartButton.addEventListener('click', startGame);
+
+  startGame();
+</script>
+</body>
+</html>
