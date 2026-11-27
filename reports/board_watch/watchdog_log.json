@@ -1,69 +1,5 @@
 [
   {
-    "pid": "1a138d30497b4c",
-    "cat": "f01",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:21.932938"
-  },
-  {
-    "pid": "1a1355a38d3844",
-    "cat": "f01",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:23.186089"
-  },
-  {
-    "pid": "1a1359b1142e51",
-    "cat": "f01",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:23.186134"
-  },
-  {
-    "pid": "1a1355b2e29921",
-    "cat": "f06",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:44.386919"
-  },
-  {
-    "pid": "1a1355b32b92e6",
-    "cat": "f06",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:44.387059"
-  },
-  {
-    "pid": "1a1355b36f96ea",
-    "cat": "f06",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:44.387177"
-  },
-  {
-    "pid": "1a13640aeb9c63",
-    "cat": "f06",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:41:44.387314"
-  },
-  {
-    "pid": "1a139dbc7fb3ad",
-    "cat": "f07",
-    "kote": "質問ボット",
-    "flag": "D",
-    "score": 0.76,
-    "at": "2026-10-15T21:41:51.334637"
-  },
-  {
     "pid": "1a135baea97826",
     "cat": "f11",
     "kote": "LA ◆HEALING3ARIGATO",
@@ -7998,5 +7934,69 @@
     "flag": "B",
     "score": 0.9,
     "at": "2026-11-27T20:11:56.797959"
+  },
+  {
+    "pid": "1a21d59335fab6",
+    "cat": "f01",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-27T23:11:57.030808"
+  },
+  {
+    "pid": "1a21dfe01b873a",
+    "cat": "f01",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T02:11:57.695349"
+  },
+  {
+    "pid": "1a21ea2cad8386",
+    "cat": "f01",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:11:56.997109"
+  },
+  {
+    "pid": "1a21e06bbf33c2",
+    "cat": "f11",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:12:16.477663"
+  },
+  {
+    "pid": "1a21e06dda82b5",
+    "cat": "f11",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:12:16.477826"
+  },
+  {
+    "pid": "1a21e06ee6261e",
+    "cat": "f11",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:12:16.478012"
+  },
+  {
+    "pid": "1a21e07010bcbb",
+    "cat": "f11",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:12:16.478116"
+  },
+  {
+    "pid": "1a21e0713f1afd",
+    "cat": "f11",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T05:12:16.478218"
   }
 ]

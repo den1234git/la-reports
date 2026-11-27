@@ -11568,5 +11568,85 @@
     "thread": "ありがとうございます！新しい一日への感謝の言葉を shared_workplace_relative",
     "body": "「相手の気持ちを分かるのは難しいよね。でも、本当に困ってることって話してくれる相手いるの？信頼できるか？」",
     "at": "2026-11-27T20:12:32.072178"
+  },
+  "1a21d59335fab6": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "1a135b95557eca",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-27T23:11:57.030786",
+    "notified": true
+  },
+  "1a21dfe01b873a": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "1a135b95557eca",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T02:11:57.695329",
+    "notified": true
+  },
+  "1a21ea2cad8386": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "1a135b95557eca",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:11:56.997089",
+    "notified": true
+  },
+  "1a21e06bbf33c2": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "gate_entrance",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:12:16.477651",
+    "notified": true
+  },
+  "1a21e06dda82b5": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "gate_entrance",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:12:16.477819",
+    "notified": true
+  },
+  "1a21e06ee6261e": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "gate_entrance",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:12:16.478006",
+    "notified": true
+  },
+  "1a21e07010bcbb": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "gate_entrance",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:12:16.478109",
+    "notified": true
+  },
+  "1a21e0713f1afd": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "gate_entrance",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T05:12:16.478211",
+    "notified": true
   }
 }
