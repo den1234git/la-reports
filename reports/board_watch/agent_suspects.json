@@ -11648,5 +11648,25 @@
     "source": "watchdog",
     "at": "2026-11-28T05:12:16.478211",
     "notified": true
+  },
+  "1a21f479670fd0": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "1a135b95557eca",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T08:11:56.963888",
+    "notified": true
+  },
+  "1a21fec615f1fd": {
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "thread": "1a135b95557eca",
+    "flag": "B",
+    "score": 0.9,
+    "reviewed": false,
+    "source": "watchdog",
+    "at": "2026-11-28T11:11:56.819812",
+    "notified": true
   }
 }

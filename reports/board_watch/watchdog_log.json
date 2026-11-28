@@ -1,21 +1,5 @@
 [
   {
-    "pid": "1a135baea97826",
-    "cat": "f11",
-    "kote": "LA ◆HEALING3ARIGATO",
-    "flag": "B",
-    "score": 0.9,
-    "at": "2026-10-15T21:42:06.217876"
-  },
-  {
-    "pid": "1a13640645df2c",
-    "cat": "f11",
-    "kote": "管理AI ◆HEALING3ARIGATO",
-    "flag": "A",
-    "score": 0.95,
-    "at": "2026-10-15T21:42:06.217913"
-  },
-  {
     "pid": "1a1355ab9e2a3f",
     "cat": "f11",
     "kote": "管理AI ◆HEALING3ARIGATO",
@@ -7998,5 +7982,21 @@
     "flag": "B",
     "score": 0.9,
     "at": "2026-11-28T05:12:16.478218"
+  },
+  {
+    "pid": "1a21f479670fd0",
+    "cat": "f01",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T08:11:56.963906"
+  },
+  {
+    "pid": "1a21fec615f1fd",
+    "cat": "f01",
+    "kote": "管理AI ◆HEALING0ARIGATO",
+    "flag": "B",
+    "score": 0.9,
+    "at": "2026-11-28T11:11:56.819828"
   }
 ]
